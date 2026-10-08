@@ -1,0 +1,6 @@
+reference D (T0), kinds T0,T1,T1b,T0m: 654 first coronas
+  ... 500/654  (44s)
+dead 648, alive 6, undecided 0   45s
+surviving coronas by witnessed role:
+  cluster A,B,C,E present: true; T0m neighbours: 0: 5
+  cluster A,B,C,E present: true; T0m neighbours: 1: 1

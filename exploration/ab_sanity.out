@@ -1,0 +1,8 @@
+P  corners: 90.0 120.0 97.3 112.7 120.0
+Pb corners: 120.0 112.7 97.3 120.0 90.0
+H  corners: 120.0 157.3 82.7 157.3 165.4 134.6 82.7
+corona of A (P): 226 coronas (1739 nodes, 0.2s); touching BH; containing all: 14
+corona of B (Pb): 304 coronas (3620 nodes, 0.2s); touching ACH; containing all: 14
+corona of C (P): 226 coronas (1747 nodes, 0.1s); touching BH; containing all: 99
+corona of D (P): 304 coronas (2497 nodes, 0.1s); touching H; containing all: 138
+corona of H (H): 4 coronas (104 nodes, 0.0s); touching ABCD; containing all: 4

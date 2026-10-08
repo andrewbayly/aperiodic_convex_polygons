@@ -1,0 +1,8 @@
+roles for the reference pentagon: orig:A, orig:C, orig:D, mirr:B
+reference pentagon (a=1.94, b=0.8, d=0.2): 226 first coronas (1739 nodes)
+dead 206, alive 20, undecided 0   1s
+surviving coronas by witnessed role:
+  mirr:B: 5
+  orig:A: 5
+  orig:C: 7
+  orig:D: 3

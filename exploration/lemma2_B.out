@@ -1,0 +1,11 @@
+reference tile B (T1b): 618 first coronas; roles B,E
+  ... 100/618  (9s)
+  ... 200/618  (19s)
+  ... 300/618  (51s)
+  ... 400/618  (75s)
+  ... 500/618  (87s)
+  ... 600/618  (100s)
+dead 588, alive 30, undecided 0   100s
+surviving coronas by role witnessed by a T0 in cluster position:
+  E: 16
+  B: 14

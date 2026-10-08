@@ -1,0 +1,16 @@
+reference tile A (T1): 1156 first coronas; roles A,C
+  ... 100/1156  (24s)
+  ... 200/1156  (56s)
+  ... 300/1156  (78s)
+  ... 400/1156  (88s)
+  ... 500/1156  (89s)
+  ... 600/1156  (89s)
+  ... 700/1156  (89s)
+  ... 800/1156  (89s)
+  ... 900/1156  (90s)
+  ... 1000/1156  (96s)
+  ... 1100/1156  (113s)
+dead 1117, alive 39, undecided 0   121s
+surviving coronas by role witnessed by a T0 in cluster position:
+  C: 27
+  A: 12

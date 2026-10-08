@@ -1,0 +1,4 @@
+reference heptagon (a=1.94, b=0.8, d=0.2): 4 first coronas (104 nodes)
+dead 2, alive 2, undecided 0   0s
+surviving coronas by witnessed role:
+  cluster: 2

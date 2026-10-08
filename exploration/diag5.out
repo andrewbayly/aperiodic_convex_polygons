@@ -1,0 +1,5 @@
+corona of A: 1156 coronas (14055 nodes, 9.2s); pieces sharing a vertex with A: BDE; coronas containing all of them: 102
+corona of B: 618 coronas (8151 nodes, 5.4s); pieces sharing a vertex with B: ACDE; coronas containing all of them: 36
+corona of C: 942 coronas (13887 nodes, 9.0s); pieces sharing a vertex with C: BD; coronas containing all of them: 126
+corona of D: 120 coronas (1845 nodes, 1.4s); pieces sharing a vertex with D: ABCE; coronas containing all of them: 10
+corona of E: 618 coronas (8107 nodes, 5.1s); pieces sharing a vertex with E: ABD; coronas containing all of them: 162

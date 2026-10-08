@@ -1,0 +1,11 @@
+import { writeFileSync } from 'fs';
+import { tileAB, drawSVG, HEAD, dirVec, SEQ } from './tab_lib.js';
+const a = 1.94, b = 0.8;
+const { V, len } = tileAB(a, b);
+const u = dirVec(HEAD[11]);
+const d = 0.2;
+const P = [V[11][0] + d * u[0], V[11][1] + d * u[1]];
+console.log('edge 11-12: length', len[11], '(' + SEQ[11] + '), heading', HEAD[11] * 15, 'deg');
+console.log('V11', V[11].map(x => x.toFixed(4)), 'V12', V[12].map(x => x.toFixed(4)));
+console.log('P', P.map(x => x.toFixed(4)), ' dist from 11 =', Math.hypot(P[0]-V[11][0], P[1]-V[11][1]).toFixed(4), ' dist to 12 =', Math.hypot(P[0]-V[12][0], P[1]-V[12][1]).toFixed(4));
+writeFileSync('tile_ab_P.svg', drawSVG({ V, a, b, points: [{ name: 'P', xy: P }], file: 'x', caption: 'P on edge 11-12, 0.2 from vertex 11' }));

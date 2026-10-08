@@ -1,0 +1,16 @@
+reference A (T1), kinds T0,T1,T1b,T0m: 4586 first coronas
+  ... 500/4586  (227s)
+  ... 1000/4586  (401s)
+  ... 1500/4586  (428s)
+  ... 2000/4586  (429s)
+  ... 2500/4586  (431s)
+  ... 3000/4586  (445s)
+  ... 3500/4586  (541s)
+  ... 4000/4586  (651s)
+  ... 4500/4586  (756s)
+dead 4439, alive 147, undecided 0   825s
+surviving coronas by witnessed role:
+  A: 22
+  Bm: 23
+  C: 78
+  Em: 24

@@ -1,0 +1,16 @@
+import { readFileSync } from 'fs';
+const faces = JSON.parse(readFileSync('ab5_faces.json', 'utf8'));
+const strip = (f) => f.filter((p, i) => { const a = f[(i+f.length-1)%f.length], b = f[(i+1)%f.length]; return Math.abs((p[0]-a[0])*(b[1]-p[1]) - (p[1]-a[1])*(b[0]-p[0])) > 1e-9; });
+const sig = (f) => { const n = f.length; return f.map((p, i) => { const pv = f[(i+n-1)%n], nx = f[(i+1)%n];
+  const d1 = Math.atan2(pv[1]-p[1], pv[0]-p[0]), d2 = Math.atan2(nx[1]-p[1], nx[0]-p[0]);
+  const ang = ((((d1-d2)*180/Math.PI)%360)+360)%360; return [Math.round(ang*1000)/1000, Math.round(Math.hypot(nx[0]-p[0], nx[1]-p[1])*1e4)/1e4]; }); };
+const canon = (s) => { const n = s.length; let best = null; for (let r = 0; r < n; r++) { const k = JSON.stringify(Array.from({length:n}, (_, j) => s[(j+r)%n])); if (best === null || k < best) best = k; } return best; };
+const mirror = (f) => f.map(([x, y]) => [-x, y]).reverse();
+const fs = faces.map(strip);
+fs.forEach((f, i) => console.log(i, f.length + '-gon', sig(f).map(([a, l]) => `${a.toFixed(1)}°→${l.toFixed(3)}`).join('  ')));
+const pent = fs.map((f, i) => ({ f, i })).filter(x => x.f.length === 5);
+const base = canon(sig(pent[0].f)), baseM = canon(sig(mirror(pent[0].f)));
+for (const { f, i } of pent) console.log('pentagon face', i, ': direct-congruent to first:', canon(sig(f)) === base, '| mirror-congruent:', canon(sig(f)) === baseM);
+console.log('pentagon has mirror symmetry:', base === baseM);
+const h = fs.find(f => f.length === 7);
+console.log('heptagon convex:', sig(h).every(([a]) => a < 180 - 1e-9), ' angle sum', sig(h).reduce((s, [a]) => s + a, 0).toFixed(1));

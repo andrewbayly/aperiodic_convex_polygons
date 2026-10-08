@@ -1,0 +1,9 @@
+120 first coronas of T0
+dead: 116  alive: 4  undecided (budget hit): 0   5s
+by cluster tiles present in the seed corona:
+  -     dead 50  alive 0  undecided 0
+  ABC   dead 10  alive 0  undecided 0
+  ABCE  dead 6  alive 4  undecided 0
+  BC    dead 10  alive 0  undecided 0
+  BCE   dead 10  alive 0  undecided 0
+  C     dead 30  alive 0  undecided 0
