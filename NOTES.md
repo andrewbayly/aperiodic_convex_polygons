@@ -253,3 +253,16 @@ Status of Rao's work as of 2026-10-08, as far as I could determine: arXiv prepri
 4. for every piece whose surrounding disc of radius 9 is fully covered (30 335 pieces: T1 16 639, T1bar 7 629, T0 5 286, T0bar 781), forms the true first corona (engine-style closure), moves the core to the reference position, and looks it up among the engine's first coronas and its pruning survivors.
 Result: all 30 335 true coronas are among the engine's survivors (so none was pruned wrongly), and no two tiles inside any corona overlap. Distinct true coronas realised: T1 16 of 25, T1bar 8 of 25 (20 of 25 after identifying mirror images), T0 2 of 2, T0bar 1 of 2. A survivor that never occurs is allowed (survivors are a superset of true coronas); it still contains a cluster role, so the argument is unaffected. Caveat: this is one patch of one hat tiling class (the substitution hull); it samples, it does not prove completeness. An earlier version of the test counted pieces near the patch boundary and reported spurious failures; those were boundary artefacts (incomplete neighbourhoods), removed by the disc-coverage criterion.
 Runtime of the level-5 run: about 10 minutes; `verify.sh` uses level 4.
+
+### Can the genuine-tiling test detect engine faults?  (`tests/run_mutations_real.py`, run 2026-10-08, level-3 patch, 245 interior coronas)
+| mutation of `exact/engine.js` | result of the genuine-tiling test | engine output (T1: first coronas/survivors) |
+|---|---|---|
+| none | PASSED, 0 true coronas lost | 368 / 25 |
+| no phantoms | **FAILED**, 15 of 245 true coronas not survivors | 232 / 20 |
+| phantom never consumed (the original bug) | **FAILED**, 15 lost | 232 / 20 |
+| drop corner 0 of every kind | **FAILED**, 216 lost | 49 / 1 |
+| corner must be strictly narrower than the gap | **FAILED**, 245 lost | 0 / 0 |
+| phantoms only for gaps > π+0.5 | **FAILED**, 15 lost | 232 / 20 |
+| overlap test always false | PASSED (not detected) | 368 / 25 |
+| overlapping wedges not detected | PASSED (not detected) | 452 / 31 |
+Reading: the test reliably catches faults that make the engine *lose* legal configurations, which is the dangerous direction for the argument (it includes the real phantom bug found during development, which this test would have caught). It does not catch faults that make the engine accept *extra* configurations; that direction is one-sided by design (survivors are allowed to be a superset), is covered by the earlier mutation tests (`exact/run_mutations.py`: the 452/31 and the redundant overlap test), and merely makes the result weaker (more survivors, which then must each still show a role).

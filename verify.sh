@@ -37,6 +37,7 @@ for m in H P; do
 done
 if [ "${1:-}" = "--full" ]; then
   echo "== mutation tests =="; ( cd exact && python3 run_mutations.py ) | tee out/mutations.txt; rm -f exact/engine_mut.js exact/analyze_mut.js exact/mono_mut.js
+  echo "== mutation tests of the genuine-tiling test =="; python3 tests/run_mutations_real.py | tee out/mutations_real.txt
   echo "== differential test (30 cases) =="
   ( cd py2 && node ../exact/runcases.js cases.json ../out/js_cases.json && python3 run_cases.py cases.json ../out/py_cases.json && python3 compare_cases.py ../out/js_cases.json ../out/py_cases.json ) | tee out/cases.txt
 fi
