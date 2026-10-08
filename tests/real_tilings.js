@@ -119,6 +119,17 @@ placement.forEach((p, hi) => {
   }
 });
 console.log(`pieces: ${tiles.length}`);
+if (process.env.DRAW) { // optional picture of the patch: pieces coloured by kind, parent Tile(a,b) outlines in black
+  const { writeFileSync } = await import('fs');
+  const col = { P: '#e8a33d', Pb: '#4a90c2', H: '#c4c4c4', Hb: '#c4c4c4' };
+  const pts = tiles.flatMap((x) => x.t.fpts); const x0 = Math.min(...pts.map((p) => p[0])), x1 = Math.max(...pts.map((p) => p[0])), y0 = Math.min(...pts.map((p) => p[1])), y1 = Math.max(...pts.map((p) => p[1]));
+  const W = 1000, sc = W / (x1 - x0), Hh = (y1 - y0) * sc;
+  const tr = (p) => `${((p[0] - x0) * sc).toFixed(1)},${((y1 - p[1]) * sc).toFixed(1)}`;
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${Hh.toFixed(0)}" viewBox="0 0 ${W} ${Hh.toFixed(0)}"><rect width="100%" height="100%" fill="#fff"/>`;
+  for (const x of tiles) svg += `<polygon points="${x.t.fpts.map(tr).join(' ')}" fill="${col[x.kn]}" stroke="#555" stroke-width="0.6"/>`;
+  placement.forEach((p, hi) => { const org = tileOrigin[hi]; const outline = Vact.map((z) => cf(cadd(org, gmap(z, p.r, p.k)))).filter((_, i) => i !== COLLINEAR); svg += `<polygon points="${outline.map(tr).join(' ')}" fill="none" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>`; });
+  writeFileSync(process.env.DRAW, svg + '</svg>'); console.log('drew', process.env.DRAW);
+}
 
 // ---- reference coronas (first coronas and survivors) for the 4 kinds
 const refPoly = { P: pieces.A, Pb: mirrorPoly(pieces.A), H: pieces.H, Hb: mirrorPoly(pieces.H) };

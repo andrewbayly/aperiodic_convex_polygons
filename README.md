@@ -28,6 +28,9 @@ Point 1 rests on a finite computation (exact arithmetic, `exact/`, independently
 
 Full argument: **NOTES.md → "RECOMPOSITION ARGUMENT"** and **"MLD, stated precisely"**.
 
+## Paper
+`paper/main.tex` (and the compiled `paper/main.pdf`) is a draft write-up of the result, with the full argument, the verification and the caveats. It is a draft by a single author and has not been reviewed.
+
 ## Reproduce
 ```
 ./verify.sh          # core results, JS and Python engines compared (needs node ≥ 18, python3; about 20 minutes on 2 cores, almost all of it the Python T1 pass)

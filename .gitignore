@@ -2,3 +2,9 @@ __pycache__/
 node_modules/
 py_*.json
 out/
+paper/*.aux
+paper/*.log
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.out
+paper/*.toc
