@@ -1,0 +1,1 @@
+`hat.js`, `geometry.js`, `LICENSE`: copied unmodified from https://github.com/isohedral/hatviz (Craig S. Kaplan, BSD 3-Clause), the reference implementation of the hat substitution system of Smith et al. Used only as an independent source of genuine hat tilings (`../gen_hat_patch.js`).

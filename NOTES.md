@@ -242,3 +242,14 @@ Suggested wording for the write-up: "It may be that there is a range of solution
 ## Minimality wording
 Suggested: "A set of two prototiles is the smallest possible provided no single convex polygon is an aperiodic monotile. That is the conclusion of Rao (arXiv:1708.00274), who classifies the convex polygons that tile the plane, using computer assistance; Hales has verified part of it. To our knowledge the work has not appeared in a refereed journal, so minimality is conditional on it. Nothing else in this repository depends on it."
 Status of Rao's work as of 2026-10-08, as far as I could determine: arXiv preprint (July 2017), partly verified by Hales (2017 blog post), cited conditionally in arXiv:2506.18473 (J. Geom. Graph. 29(2), 2025) as unrefereed; I found no statement of intent to publish.
+
+---
+
+## Test against genuine tilings (soundness of pruning)  [added 2026-10-08]
+`tests/gen_hat_patch.js` runs the hat substitution of C. Kaplan's `hatviz` (BSD-3, copied unmodified into `tests/third_party/hatviz/`) to produce a genuine hat tiling patch (level 5: 7921 hats). `tests/real_tilings.js` then
+1. matches every hat to our Tile(1,√3) (rotation/reflection), exact;
+2. grades each tile vertex by its (a-edge, b-edge) content and propagates translations over shared vertices. All 7921 tiles are reached, and the grading is exactly consistent at every shared vertex (0 violations), an independent confirmation of the "combinatorially equivalent tilings" statement (Smith et al. Thm 6.1) for this patch. The patch is then realised with (a,b) = (299,240);
+3. cuts every tile with d = 208 into A,B,C,D,H (39 605 pieces, kinds T1/T1bar/T0/T0bar as expected);
+4. for every piece whose surrounding disc of radius 9 is fully covered (30 335 pieces: T1 16 639, T1bar 7 629, T0 5 286, T0bar 781), forms the true first corona (engine-style closure), moves the core to the reference position, and looks it up among the engine's first coronas and its pruning survivors.
+Result: all 30 335 true coronas are among the engine's survivors (so none was pruned wrongly), and no two tiles inside any corona overlap. Distinct true coronas realised: T1 16 of 25, T1bar 8 of 25 (20 of 25 after identifying mirror images), T0 2 of 2, T0bar 1 of 2. A survivor that never occurs is allowed (survivors are a superset of true coronas); it still contains a cluster role, so the argument is unaffected. Caveat: this is one patch of one hat tiling class (the substitution hull); it samples, it does not prove completeness. An earlier version of the test counted pieces near the patch boundary and reported spurious failures; those were boundary artefacts (incomplete neighbourhoods), removed by the disc-coverage criterion.
+Runtime of the level-5 run: about 10 minutes; `verify.sh` uses level 4.
