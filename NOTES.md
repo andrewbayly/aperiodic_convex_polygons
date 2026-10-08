@@ -232,3 +232,13 @@ Read from the PDF the user supplied (60 pp; I read abstract, intro, the ASP/ASPm
 * Only *discusses the possibility* that pairs of these may form an aperiodic two-tile set "ASPmr{A,B}"; poses "Does an ASPmr{A-tile, B-tile} exist?" as an open Question. No aperiodicity proof is given. Tiles are concave, not convex.
 * Defines P{A,B} as two non-congruent tiles with no matching rules, mirror images counted as the same tile (consistent with our convention).
 So it does not pre-empt a convex two-prototile set with a computer-assisted aperiodicity argument; it is relevant background and for terminology (ASP). A cautious claim: "to our knowledge the first explicit two-prototile aperiodic set of convex polygons with no matching rules," conditional on the verification above, and subject to a fuller literature search.
+
+---
+
+## Parameter region and the "infinite family" remark  [added 2026-10-08]
+`figures/parameter_region.png`: float classification (`scan_point.js`) on b=1, a = 1.1..4.0 (d = 0.05..0.5) and a = 1.1..2.0 (d = 0.55..1.2), 440 points. 226 give five convex pieces with the same outcome as Q (T0: 2 survivors; T1: 25 survivors with roles 5/11/4/5), 212 have a non-convex piece, 2 have pieces that fail the area check. The valid points form an L-shaped region, and Q = (299,240,208) lies well inside it (a/b = 1.246, d/b = 0.867). Not scanned: a/b > 2 with d/b > 0.5. The scan is float and uses node budgets; only Q, R1 and R2 have exact-arithmetic verification.
+Suggested wording for the write-up: "It may be that there is a range of solutions, varying two parameters, giving an infinite family of aperiodic tile sets. We have not attempted to prove that. Rather, we chose specific values and proved aperiodicity for them."
+
+## Minimality wording
+Suggested: "A set of two prototiles is the smallest possible provided no single convex polygon is an aperiodic monotile. That is the conclusion of Rao (arXiv:1708.00274), who classifies the convex polygons that tile the plane, using computer assistance; Hales has verified part of it. To our knowledge the work has not appeared in a refereed journal, so minimality is conditional on it. Nothing else in this repository depends on it."
+Status of Rao's work as of 2026-10-08, as far as I could determine: arXiv preprint (July 2017), partly verified by Hales (2017 blog post), cited conditionally in arXiv:2506.18473 (J. Geom. Graph. 29(2), 2025) as unrefereed; I found no statement of intent to publish.
